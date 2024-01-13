@@ -45,4 +45,5 @@ jobs:
           labels: |
             website=${{ env.WEBSITE }}
             env=${{ env.RUNTIME_ENVIRONMENT }}
+            org.opencontainers.image.description=Dummy description
 
