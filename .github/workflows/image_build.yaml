@@ -54,3 +54,4 @@ jobs:
           labels: |
             website=${{ env.WEBSITE }}
             env=${{ env.RUNTIME_ENVIRONMENT }}
+            version=${{ env.VERSION }}
