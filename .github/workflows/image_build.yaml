@@ -9,6 +9,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  RUNTIME_ENVIRONMENT: ${{ github.ref == 'refs/heads/master' && 'prod' || 'dev' }}
   BUILD_SUFFIX: ${{ github.ref == 'refs/heads/master' && '' || 'dev-' }}
 
 jobs:
@@ -41,6 +42,7 @@ jobs:
           target: panovskiy
           push: true
           tags: ghcr.io/wol4aravio/${{ env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
-          labels:
-          - website=${{ env.WEBSITE }}
+          labels: |
+            website=${{ env.WEBSITE }}
+            env=${{ env.RUNTIME_ENVIRONMENT }}
 
