@@ -9,6 +9,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  BUILD_SUFFIX: ${{ github.ref == 'refs/heads/master' && '' || 'dev' }}
 
 jobs:
   build:
@@ -19,9 +20,4 @@ jobs:
     steps:
       - name: Compose build suffix
         run: |
-          echo "Discovering the environment stage:"
-          if [[ ${{ github.ref == 'refs/heads/dev' }} ]]; then
-            echo "BUILD_SUFFIX=dev" >> $GITHUB_ENV
-          fi
-          echo "Environment stage is set:"
-          echo "${{ GITHUB_ENV }}"
+          echo "${{ BUILD_SUFFIX }}"
