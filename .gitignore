@@ -5,8 +5,9 @@
 .vscode
 
 # Language Specific
+## Python
 **/__pycache__
 **/.pytest_cache
-
+## Web
 **/node_modules
 **/.nuxt
