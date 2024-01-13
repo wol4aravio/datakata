@@ -43,5 +43,5 @@ jobs:
           tag: ${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
       - name: Test
         run: |
-          echo ${{ steps.image_exists_panovskiy.tag  }}
+          echo ${{ steps.image_exists_panovskiy.output  }}
 
