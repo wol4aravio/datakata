@@ -41,7 +41,16 @@ jobs:
           registry: ghcr.io/wol4aravio
           repository: ${{ env.WEBSITE }}
           tag: ${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
-      - name: Test
-        run: |
-          echo ${{ steps.image_exists_panovskiy.outputs.tag  }}
-
+      - name: Build panovskiy.ru website
+        uses: docker/build-push-action@v5
+        if: steps.image_exists_panovskiy.outputs.tag == 'not found'
+        with:
+          context: .
+          file: images/web/Dockerfile
+          target: panovskiy
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ghcr.io/wol4aravio/${{ env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
+          labels: |
+            website=${{ env.WEBSITE }}
+            env=${{ env.RUNTIME_ENVIRONMENT }}
