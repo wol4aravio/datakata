@@ -37,6 +37,7 @@ jobs:
       - name: Check version for panovskiy
         uses: cloudposse/github-action-docker-image-exists@main
         id: image_exists_panovskiy
+        continue-on-error: true
         with:
           registry: ghcr.io
           organization: wol4aravio
