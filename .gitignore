@@ -1,0 +1,13 @@
+# Platform Specific
+.DS_Store
+
+# IDE Specific
+.vscode
+
+# Language Specific
+## Python
+**/__pycache__
+**/.pytest_cache
+## Web
+**/node_modules
+**/.nuxt
