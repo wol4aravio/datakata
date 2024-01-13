@@ -12,8 +12,6 @@ ENV PORT=3000
 
 # [Website] panovskiy.ru
 FROM base as panovskiy
-LABEL project="panovskiy"
-LABEL version="0.0.1"
 
 ## Copy configs
 COPY nuxt.config.ts .
