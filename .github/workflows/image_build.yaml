@@ -31,7 +31,8 @@ jobs:
       - name: Get env vars
         uses: cardinalby/export-env-action@v2
         with:
-          envFile: 'env_files/panovskiy.env'  
+          envFile: 'env_files/panovskiy.env'
+          expand: 'true'
       - name: Build panovskiy.ru website
         uses: docker/build-push-action@v5
         with:
