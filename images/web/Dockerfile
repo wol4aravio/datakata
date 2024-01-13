@@ -21,8 +21,8 @@ COPY tsconfig.json .
 
 ## Copy project files
 COPY app.vue .
-COPY public .
-COPY server .
+COPY public public
+COPY server server
 
 ## Build step
 RUN npm run build
