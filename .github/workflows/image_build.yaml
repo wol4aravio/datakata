@@ -12,6 +12,7 @@ env:
   RUNTIME_ENVIRONMENT: ${{ github.ref == 'refs/heads/master' && 'prod' || 'dev' }}
   BUILD_SUFFIX: ${{ github.ref == 'refs/heads/master' && '' || 'dev-' }}
 
+jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
