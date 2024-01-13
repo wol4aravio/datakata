@@ -43,13 +43,9 @@ jobs:
           organization: wol4aravio
           repository: ${{ env.WEBSITE }}
           tag: ${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
-      - name: test
-        run: |
-          echo ${{ steps.image_exists_panovskiy.conclusion }}
-          echo ${{ steps.image_exists_panovskiy.status }}
       - name: Build panovskiy.ru website
         uses: docker/build-push-action@v5
-        if: steps.image_exists_panovskiy.conclusion != 'success'
+        if: failure()
         with:
           context: .
           file: images/web/Dockerfile
