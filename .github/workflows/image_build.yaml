@@ -18,12 +18,10 @@ jobs:
       packages: write
     steps:
       - name: Compose build suffix
-        if: github.ref == 'refs/heads/master'
-        env:
-          BUILD_SUFFIX: ""
-        else:
-        env:
-          BUILD_SUFFIX: "dev"
-      - name: Test
         run: |
-          echo $BUILD_SUFFIX
+          echo "Discovering the environment stage:"
+          if [[ ${{ github.ref == 'refs/heads/dev' }} ]]; then
+            echo "BUILD_SUFFIX=dev" >> $GITHUB_ENV
+          fi
+          echo "Environment stage is set:"
+          echo "${{ GITHUB_ENV }}"
