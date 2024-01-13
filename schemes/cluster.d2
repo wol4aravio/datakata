@@ -1,0 +1,29 @@
+kubesphere: {
+    label: KubeSphere
+    label.near: top-center
+    icon: https://avatars.githubusercontent.com/u/37326490?s=280&v=4
+}
+
+master-nodes {
+    cc {
+        label: Control Center
+    }
+}
+
+worker-nodes {
+    infra {
+        label: Infrastructure
+    }
+    
+    dev {
+        label: Dev Environment
+    }
+    
+    prod {
+        label: Prod Environment
+    }
+
+}
+
+kubesphere -> master-nodes
+kubesphere -> worker-nodes
