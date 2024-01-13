@@ -35,25 +35,13 @@ jobs:
           envFile: 'env_files/panovskiy.env'
           expand: 'true'
       - name: Check version for panovskiy
-        uses: cloudposse/github-action-docker-image-exists@main
+        uses: tyriis/docker-image-tag-exists@v2.0.0
         id: image_exists_panovskiy
-        continue-on-error: true
         with:
-          registry: ghcr.io
-          organization: wol4aravio
+          registry: ghcr.io/wol4aravio
           repository: ${{ env.WEBSITE }}
           tag: ${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
-      - name: Build panovskiy.ru website
-        uses: docker/build-push-action@v5
-        if: failure()
-        with:
-          context: .
-          file: images/web/Dockerfile
-          target: panovskiy
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: ghcr.io/wol4aravio/${{ env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
-          labels: |
-            website=${{ env.WEBSITE }}
-            env=${{ env.RUNTIME_ENVIRONMENT }}
+      - name: Test
+        run: |
+          echo ${{ steps.image_exists_panovskiy.tag  }}
 
