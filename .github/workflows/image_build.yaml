@@ -36,11 +36,15 @@ jobs:
           expand: 'true'
       - name: Check version for panovskiy
         uses: cloudposse/github-action-docker-image-exists@main
+        id: image_exists_panovskiy
         with:
           registry: ghcr.io
           organization: wol4aravio
           repository: ${{ env.WEBSITE }}
           tag: ${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
+      - name: test
+        run: |
+          echo ${{ steps.image_exists_panovskiy.conclusion }}
       - name: Build panovskiy.ru website
         uses: docker/build-push-action@v5
         with:
