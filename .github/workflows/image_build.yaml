@@ -28,10 +28,10 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: cardinalby/export-env-action@v2
-        id: env_panovskiy
+      - name: Get env vars
+        uses: cardinalby/export-env-action@v2
         with:
-          envFile: 'env_files/panovskiy.env'    
+          envFile: 'env_files/panovskiy.env'  
       - name: Build panovskiy.ru website
         uses: docker/build-push-action@v5
         with:
@@ -39,5 +39,5 @@ jobs:
           file: images/web/Dockerfile
           target: panovskiy
           push: true
-          tags: ghcr.io/wol4aravio/${{ steps.env_panovskiy.env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ steps.env_panovskiy.env.VERSION }}
+          tags: ghcr.io/wol4aravio/${{ env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
 
