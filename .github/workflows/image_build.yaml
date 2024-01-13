@@ -46,6 +46,7 @@ jobs:
       - name: test
         run: |
           echo ${{ steps.image_exists_panovskiy.conclusion }}
+          echo ${{ steps.image_exists_panovskiy.status }}
       - name: Build panovskiy.ru website
         uses: docker/build-push-action@v5
         if: steps.image_exists_panovskiy.conclusion != 'success'
