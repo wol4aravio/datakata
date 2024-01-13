@@ -41,4 +41,6 @@ jobs:
           target: panovskiy
           push: true
           tags: ghcr.io/wol4aravio/${{ env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
+          labels:
+          - website=${{ env.WEBSITE }}
 
