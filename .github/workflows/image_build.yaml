@@ -20,4 +20,4 @@ jobs:
     steps:
       - name: Compose build suffix
         run: |
-          echo "${{ BUILD_SUFFIX }}"
+          echo "${{ env.BUILD_SUFFIX }}"
