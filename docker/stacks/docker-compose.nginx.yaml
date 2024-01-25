@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:1.25
+    restart: always
+    networks:
+      - datakata-network
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /web_certs/:/etc/ssl/
+      - /nginx/sites/:/etc/nginx/conf.d
+      - /nginx/dev_pass:/etc/nginx/.htpasswd
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - "node.labels.env.prod==true"
+      resources:
+        reservations:
+          cpus: "0.5"
+          memory: 256mb
+        limits:
+          cpus: "1.0"
+          memory: 1024mb
+
+networks:
+  datakata-network:
+    external: true
