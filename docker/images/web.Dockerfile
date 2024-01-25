@@ -10,20 +10,20 @@ RUN npm install
 ENV HOST=0.0.0.0
 ENV PORT=3000
 
-# [Website] panovskiy.ru
-FROM base as panovskiy
-
 ## Copy configs
-COPY nuxt.config.ts .
+COPY astro.config.mjs .
 COPY tsconfig.json .
 
 ## Copy project files
-COPY app.vue .
 COPY public public
-COPY server server
+COPY src src
 
-## Build step
-RUN npm run build
+# [Website] panovskiy.ru
+FROM base as panovskiy
+RUN TARGET=panovskiy npm run build
+ENTRYPOINT ["node", "./dist/server/entry.mjs"]
 
-## Run step
-ENTRYPOINT ["node", ".output/server/index.mjs"]
+# [Website] datakata.ru
+FROM base as datakata
+RUN TARGET=datakata npm run build
+ENTRYPOINT ["node", "./dist/server/entry.mjs"]
