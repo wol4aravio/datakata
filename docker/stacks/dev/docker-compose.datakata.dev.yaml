@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  website_dev_panovskiy:
+  website_dev_datakata:
     image: ghcr.io/wol4aravio/datakata:dev-0.0.1
     labels:
       env: dev
