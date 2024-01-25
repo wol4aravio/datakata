@@ -46,7 +46,7 @@ jobs:
         if: steps.image_exists_panovskiy.outputs.tag == 'not found'
         with:
           context: .
-          file: images/web/Dockerfile
+          file: docker/images/web.Dockerfile
           target: panovskiy
           push: true
           platforms: linux/amd64,linux/arm64
