@@ -27,3 +27,18 @@ ENTRYPOINT ["node", "./dist/server/entry.mjs"]
 FROM base as datakata
 RUN TARGET=datakata npm run build
 ENTRYPOINT ["node", "./dist/server/entry.mjs"]
+
+# [Website] cyberpony.ru
+FROM base as cyberpony
+RUN TARGET=cyberpony npm run build
+ENTRYPOINT ["node", "./dist/server/entry.mjs"]
+
+# [Website] foxdriven.ru
+FROM base as foxdriven
+RUN TARGET=foxdriven npm run build
+ENTRYPOINT ["node", "./dist/server/entry.mjs"]
+
+# [Website] bigdatawhale.ru
+FROM base as bigdatawhale
+RUN TARGET=bigdatawhale npm run build
+ENTRYPOINT ["node", "./dist/server/entry.mjs"]

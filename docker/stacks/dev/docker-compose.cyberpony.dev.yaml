@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  website_dev_cyberpony:
+    image: ghcr.io/wol4aravio/cyberpony:dev-0.0.1
+    labels:
+      env: dev
+    networks:
+      - datakata-network
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - "node.labels.env.dev==true"
+      resources:
+        reservations:
+          cpus: "0.2"
+          memory: 128mb
+        limits:
+          cpus: "0.5"
+          memory: 256mb
+
+networks:
+  datakata-network:
+    external: true
