@@ -17,6 +17,7 @@ COPY tsconfig.json .
 ## Copy project files
 COPY public public
 COPY src src
+COPY common common
 
 # [Website] panovskiy.ru
 FROM base as panovskiy

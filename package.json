@@ -11,11 +11,16 @@
     "@astrojs/mdx": "^2.1.0",
     "@astrojs/node": "^8.0.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@fontsource-variable/roboto-mono": "^5.0.17",
+    "@astrojs/ts-plugin": "^1.4.0",
     "@types/alpinejs": "^3.13.6",
     "alpinejs": "^3.13.5",
     "astro": "^4.2.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.4",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.5.11"
   }
 }
