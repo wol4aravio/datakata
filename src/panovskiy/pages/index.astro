@@ -1,5 +1,21 @@
 ---
 import RootLayout from "@common/layouts/RootLayout.astro";
+import Card from "../components/Card.astro";
+
+const title = "Валентин Пановский";
+const description =
+  "Специалист по работе с данными и машинному обучению, кандидат физико-математических наук, доцент Московского Авиационного Института";
 ---
 
-<RootLayout page_title="Валентин Пановский" page_description="TBD" />
+<RootLayout page_title={title} page_description={description}>
+  <div
+    class="mx-auto my-4 flex min-h-[100dvh] max-w-5xl flex-col justify-center"
+  >
+    <div class="mx-auto my-auto grid grid-cols-1 gap-4 md:grid-cols-2">
+      <Card>Photo 1</Card>
+      <Card>Text 1</Card>
+      <Card>Text 2</Card>
+      <Card>Text 3</Card>
+    </div>
+  </div>
+</RootLayout>
