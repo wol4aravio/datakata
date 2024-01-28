@@ -1,7 +1,6 @@
 {
   "name": "datakata",
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
     "dev": "WEBSITE=$TARGET astro dev",
     "build": "WEBSITE=$TARGET astro check && WEBSITE=$TARGET astro build"
