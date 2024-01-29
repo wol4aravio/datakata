@@ -10,6 +10,11 @@ export default {
       center: true,
     },
     extend: {
+      colors: {
+        "foxdriven-accent": "#dc3900",
+        "cyberpony-accent": "#cc00df",
+        "bigdatawhale-accent": "#0075e3",
+      },
       fontFamily: {
         "roboto-mono": ["Roboto Mono"],
       },
