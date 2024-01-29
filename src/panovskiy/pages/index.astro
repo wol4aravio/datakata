@@ -8,14 +8,48 @@ const description =
 ---
 
 <RootLayout page_title={title} page_description={description}>
-  <div
-    class="mx-auto my-4 flex min-h-[100dvh] max-w-5xl flex-col justify-center"
-  >
-    <div class="mx-auto my-auto grid grid-cols-1 gap-4 md:grid-cols-2">
-      <Card>Photo 1</Card>
-      <Card>Text 1</Card>
-      <Card>Text 2</Card>
-      <Card>Text 3</Card>
+  <div class="mx-auto flex min-h-[100dvh] max-w-xl flex-col justify-center">
+    <div
+      class="mx-auto grid w-[90%] grid-cols-1 gap-4 p-4 md:w-[100%] md:grid-cols-2"
+    >
+      <div>
+        <img
+          src="/me.jpg"
+          alt="Пановский Валентин"
+          class="m-auto aspect-square border-2 border-black"
+        />
+      </div>
+      <Card
+        details="подробности >"
+        url="/cv"
+        icon="mdi:chart-scatter-plot-hexbin"
+      >
+        Chief Data Officer (директор по аналитике и управлению данными)
+      </Card>
+      <Card
+        details="об исследованиях >"
+        url="/science"
+        icon="mdi:account-school"
+      >
+        Доцент МАИ (НИУ), кандидат физико-математических наук
+      </Card>
+      <Card
+        details="о проекте >"
+        url="https://datakata.ru"
+        icon="mdi:space-invaders"
+      >
+        Основатель проекта Data Kata
+      </Card>
+    </div>
+    <div class="container text-center">
+      Контакты: <a
+        href="https://t.me/panovskiy_v"
+        rel="nofollow"
+        target="_blank"
+        class="hover:underline"
+      >
+        @panovskiy_v
+      </a>
     </div>
   </div>
 </RootLayout>
