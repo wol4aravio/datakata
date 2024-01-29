@@ -2,13 +2,14 @@
 
 ---
 
-<div class="relative h-[8rem] w-[20rem] md:h-[8rem] md:w-[14rem]">
+<div class="relative h-[6rem] w-full md:aspect-square md:h-full md:w-[100%]">
   <div
-    class="absolute left-0 top-0 h-[7rem] w-[19rem] bg-black md:h-[7rem] md:w-[13rem]"
+    class="absolute left-0 top-0 h-[5rem] w-[calc(100%-0.5rem)] bg-black md:h-[calc(100%-0.5rem)]"
   >
+    1
   </div>
   <div
-    class="absolute bottom-0 right-0 h-[7.5rem] w-[19.5rem] border-2 border-black bg-white p-1 md:h-[7.5rem] md:w-[13.5rem]"
+    class="absolute bottom-0 right-0 h-[5.5rem] w-[calc(100%-0.5rem)] border-2 border-black bg-white p-1 md:h-[calc(100%-0.5rem)]"
   >
     <slot />
   </div>
