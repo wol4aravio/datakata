@@ -1,0 +1,88 @@
+---
+import RootLayout from "@common/layouts/RootLayout.astro";
+import Card from "../components/Card.astro";
+
+const title = "Валентин Пановский: CV";
+const description = "Резюме (CV)";
+---
+
+<RootLayout page_title={title} page_description={description}>
+  <div class="mx-auto min-h-[100dvh] max-w-5xl border-2 border-black p-2">
+    <div>
+      <h2>Профессиональный опыт</h2>
+      <div>
+        <p>
+          В настоящее время: Group Chief Data Officer (директор по аналитике)
+          холдинга TBA
+        </p>
+        <p>
+          Ранее:
+          <ul class="list-disc pl-5">
+            <li>
+              Директор платформы данных маркетплейса
+              <a
+                href="https://www.wildberries.ru/"
+                rel="nofollow"
+                class="underline hover:decoration-2"
+              >
+                wildberries.ru
+              </a>
+            </li>
+            <li>
+              Chief Data Officer (директор департамента аналитики и управления
+              данными) видеосервиса
+              <a
+                href="https://more.tv/"
+                rel="nofollow"
+                class="underline hover:decoration-2"
+              >
+                more.tv
+              </a>
+            </li>
+            <li>
+              Chief Data Officer (руководитель департамента обработки данных)
+              образовательной платформы
+              <a
+                href="https://skillbox.ru/"
+                rel="nofollow"
+                class="underline hover:decoration-2"
+              >
+                Skillbox
+              </a>
+            </li>
+            <li>
+              Senior data scientisеt в экологическом стартапе
+              <a
+                href="https://www.linkedin.com/company/aerostate/"
+                rel="nofollow"
+                class="underline hover:decoration-2"
+              >
+                Aerostate
+              </a>
+            </li>
+            <li>
+              Аналитик платформы управления Retention
+              <a
+                href="https://retailrocket.net/"
+                rel="nofollow"
+                class="underline hover:decoration-2"
+              >
+                Retail Rocket
+              </a>
+            </li>
+            <li>
+              Ведущий инженер в
+              <a
+                href="https://www.raspletin.com/"
+                rel="nofollow"
+                class="underline hover:decoration-2"
+              >
+                ПАО «НПО «Алмаз»
+              </a>
+            </li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</RootLayout>
