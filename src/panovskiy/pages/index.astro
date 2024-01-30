@@ -1,6 +1,6 @@
 ---
 import RootLayout from "@common/layouts/RootLayout.astro";
-import Card from "../components/Card.astro";
+import MainCard from "../components/MainCard.astro";
 
 const title = "Валентин Пановский";
 const description =
@@ -8,38 +8,38 @@ const description =
 ---
 
 <RootLayout page_title={title} page_description={description}>
-  <div class="mx-auto flex min-h-[100dvh] max-w-xl flex-col justify-center">
+  <div class="mx-auto flex min-h-[100dvh] max-w-2xl flex-col justify-center">
     <div
-      class="mx-auto grid w-[90%] grid-cols-1 gap-4 p-4 md:w-[100%] md:grid-cols-2"
+      class="mx-auto grid w-[90%] grid-cols-1 gap-4 p-4 sm:w-[80%] md:w-[100%] md:grid-cols-2"
     >
       <div>
         <img
           src="/me.jpg"
           alt="Пановский Валентин"
-          class="m-auto aspect-square border-2 border-black"
+          class="m-auto aspect-square border-l-2 border-t-2 border-l-white border-t-white shadow-[-0.5rem_-0.5rem__rgba(0,0,0)]"
         />
       </div>
-      <Card
+      <MainCard
         details="подробности >"
         url="/cv"
         icon="mdi:chart-scatter-plot-hexbin"
       >
         Chief Data Officer (директор по аналитике и управлению данными)
-      </Card>
-      <Card
+      </MainCard>
+      <MainCard
         details="об исследованиях >"
         url="/science"
         icon="mdi:account-school"
       >
         Доцент МАИ (НИУ), кандидат физико-математических наук
-      </Card>
-      <Card
+      </MainCard>
+      <MainCard
         details="о проекте >"
         url="https://datakata.ru"
         icon="mdi:space-invaders"
       >
-        Основатель проекта Data Kata
-      </Card>
+        Независимый консультант и основатель проекта Data Kata
+      </MainCard>
     </div>
     <div class="container text-center">
       Контакты: <a
