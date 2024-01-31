@@ -1,20 +1,26 @@
 ---
-const { title, icon, shadow_color, url, url_text } = Astro.props;
+const { title, icon, shadow_color, decoration_color, url, url_text } =
+  Astro.props;
 
 const icon_path = "/icons/" + icon;
 ---
 
 <div
   class:list={[
-    "border-2 border-black p-4 shadow-[-0.5rem_-0.5rem]",
+    "flex w-[70%] flex-col justify-between border-2 border-black p-4 shadow-[-0.5rem_-0.5rem] md:w-full",
     shadow_color,
   ]}
 >
-  <div class="text-center">
+  <div
+    class:list={[
+      "text-center text-lg font-semibold underline decoration-2",
+      decoration_color,
+    ]}
+  >
     {title}
     <img class="container max-h-[64px] max-w-[64px]" src={icon_path} />
   </div>
-  <div class="text-justify">
+  <div class="text-justify text-sm">
     <slot />
   </div>
 </div>

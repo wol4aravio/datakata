@@ -1,9 +1,6 @@
 ---
 const { page_title, page_description } = Astro.props;
 const canonical_url = new URL(Astro.url.pathname, Astro.site);
-const favicon_url = Astro.url.toString().includes(Astro.site.hostname.toString())
-  ? "https://" + Astro.url.host + "/favicon.ico"
-  : Astro.url.origin.toString() + "/favicon.ico";
 ---
 
 <html>
@@ -15,7 +12,8 @@ const favicon_url = Astro.url.toString().includes(Astro.site.hostname.toString()
     <meta name="description" content={page_description} />
     <meta name="yandex-verification" content="024451a87aa0a298" />
     <link rel="canonical" href={canonical_url} />
-    <link rel="icon" type="image/x-icon" href={favicon_url} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

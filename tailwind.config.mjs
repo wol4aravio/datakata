@@ -18,6 +18,14 @@ export default {
       fontFamily: {
         "roboto-mono": ["Roboto Mono"],
       },
+      fontSize: {
+        "2xs": [
+          "0.5rem",
+          {
+            lineHeight: "0.75rem",
+          },
+        ],
+      },
     },
   },
   plugins: [],

@@ -5,12 +5,13 @@ const prod_mode = !Astro.url.toString().includes("//dev.");
 ---
 
 <div
-  class="my-6 grid w-full grid-cols-1 justify-items-center gap-4 px-6 md:grid-cols-3"
+  class="my-12 grid w-full grid-cols-1 justify-items-center gap-6 px-6 md:grid-cols-3"
 >
   <Card
     title="Fox Driven"
     icon="fox.png"
     shadow_color="shadow-foxdriven-accent"
+    decoration_color="decoration-foxdriven-accent"
     url={prod_mode ? "https://foxdriven.ru" : "https://dev.foxdriven.ru"}
     url_text="перейти"
   >
@@ -20,6 +21,7 @@ const prod_mode = !Astro.url.toString().includes("//dev.");
     title="Cyber Pony"
     icon="pony.png"
     shadow_color="shadow-cyberpony-accent"
+    decoration_color="decoration-cyberpony-accent"
     url={prod_mode ? "https://cyberpony.ru" : "https://dev.cyberpony.ru"}
     url_text="запустится в 2024"
   >
@@ -29,6 +31,7 @@ const prod_mode = !Astro.url.toString().includes("//dev.");
     title="Big Data Whale"
     icon="whale.png"
     shadow_color="shadow-bigdatawhale-accent"
+    decoration_color="decoration-bigdatawhale-accent"
     url={prod_mode ? "https://bigdatawhale.ru" : "https://dev.bigdatawhale.ru"}
     url_text="запустится в 2024"
   >
