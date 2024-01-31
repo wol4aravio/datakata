@@ -1,12 +1,12 @@
 ---
-import RootLayout from "@common/layouts/RootLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import DetailCard from "../components/DetailCard.astro";
 
 const title = "Валентин Пановский: CV";
 const description = "Резюме (CV)";
 ---
 
-<RootLayout page_title={title} page_description={description}>
+<MainLayout page_title={title} page_description={description}>
   <div class="flex min-h-[100dvh] flex-col justify-center">
     <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 p-6">
       <DetailCard header="Профессиональный опыт">
@@ -233,4 +233,4 @@ const description = "Резюме (CV)";
       </DetailCard>
     </div>
   </div>
-</RootLayout>
+</MainLayout>

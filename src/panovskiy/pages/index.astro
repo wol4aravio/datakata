@@ -1,5 +1,5 @@
 ---
-import RootLayout from "@common/layouts/RootLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import MainCard from "../components/MainCard.astro";
 
 const title = "Валентин Пановский";
@@ -7,7 +7,7 @@ const description =
   "Специалист по работе с данными и машинному обучению, кандидат физико-математических наук, доцент Московского Авиационного Института";
 ---
 
-<RootLayout page_title={title} page_description={description}>
+<MainLayout page_title={title} page_description={description}>
   <div class="mx-auto flex min-h-[100dvh] max-w-2xl flex-col justify-center">
     <div
       class="mx-auto grid w-[90%] grid-cols-1 gap-4 p-4 sm:w-[80%] md:w-[100%] md:grid-cols-2"
@@ -52,4 +52,4 @@ const description =
       </a>
     </div>
   </div>
-</RootLayout>
+</MainLayout>
