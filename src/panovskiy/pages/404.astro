@@ -1,11 +1,11 @@
 ---
-import RootLayout from "@common/layouts/RootLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 const title = "404";
 const description = "Зарпашиваемая страница не найдена :(";
 ---
 
-<RootLayout page_title={title} page_description={description}>
+<MainLayout page_title={title} page_description={description}>
   <div class="flex min-h-[100dvh] w-screen flex-col justify-center text-center">
     <div class="text-5xl">404</div>
     <div>К сожалению, не нашли указанную страницу :(</div>
@@ -17,4 +17,4 @@ const description = "Зарпашиваемая страница не найде
       >
     </div>
   </div>
-</RootLayout>
+</MainLayout>
