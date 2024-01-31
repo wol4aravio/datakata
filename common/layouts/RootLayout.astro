@@ -1,5 +1,4 @@
 ---
-import "../styles/fonts.css";
 import "../styles/alpine.css";
 
 const { page_title, suffix = "", page_description } = Astro.props;
@@ -15,6 +14,12 @@ const canonical_url = new URL(Astro.url.pathname, Astro.site);
     <title>{page_title}{suffix}</title>
     <meta name="description" content={page_description} />
     <link rel="canonical" href={canonical_url} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=block"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <slot />
