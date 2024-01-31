@@ -4,6 +4,8 @@ import alpinejs from "@astrojs/alpinejs";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://" + process.env.WEBSITE + ".ru",
@@ -11,7 +13,7 @@ export default defineConfig({
   publicDir: "public/" + process.env.WEBSITE,
   output: "server",
   adapter: node({
-    mode: "standalone",
+    mode: "standalone"
   }),
-  integrations: [alpinejs(), mdx(), tailwind()],
+  integrations: [alpinejs(), mdx(), tailwind(), sitemap()]
 });
