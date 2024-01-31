@@ -35,8 +35,8 @@ jobs:
       - name: Get env vars
         uses: cardinalby/export-env-action@v2
         with:
-          envFile: 'env_files/${{ matrix.site }}.env'
-          expand: 'true'
+          envFile: "env_files/${{ matrix.site }}.env"
+          expand: "true"
       - name: Check version
         uses: tyriis/docker-image-tag-exists@v2.0.0
         id: image_exists
@@ -52,7 +52,7 @@ jobs:
           file: docker/images/web.Dockerfile
           target: ${{ matrix.site }}
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: ghcr.io/wol4aravio/${{ env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
           labels: |
             website=${{ env.WEBSITE }}

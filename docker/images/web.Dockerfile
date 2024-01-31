@@ -12,6 +12,7 @@ ENV PORT=3000
 
 ## Copy configs
 COPY astro.config.mjs .
+COPY tailwind.config.mjs .
 COPY tsconfig.json .
 
 ## Copy project files
