@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "WEBSITE=$TARGET astro dev",
+    "check": "WEBSITE=$TARGET astro check",
     "build": "WEBSITE=$TARGET astro check && WEBSITE=$TARGET astro build"
   },
   "dependencies": {
