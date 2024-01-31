@@ -1,15 +1,15 @@
 ---
-const { title, icon, shadow_color, decoration_color, url, url_text } =
-  Astro.props;
+const { title, icon, shadow_color, decoration_color, url } = Astro.props;
 
 const icon_path = "/icons/" + icon;
 ---
 
-<div
+<a
   class:list={[
     "flex w-[70%] flex-col justify-between border-2 border-black p-4 shadow-[-0.5rem_-0.5rem] md:w-full",
     shadow_color,
   ]}
+  href={url}
 >
   <div
     class:list={[
@@ -23,4 +23,4 @@ const icon_path = "/icons/" + icon;
   <div class="text-justify text-sm">
     <slot />
   </div>
-</div>
+</a>
