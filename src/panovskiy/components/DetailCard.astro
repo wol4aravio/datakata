@@ -1,0 +1,10 @@
+---
+const { header } = Astro.props;
+---
+
+<div class="border-2 border-black p-4 shadow-[-0.5rem_-0.5rem__rgba(0,0,0)]">
+  <h2 class="mb-4 text-xl font-bold">
+    {header}
+  </h2>
+  <slot />
+</div>

@@ -1,6 +1,8 @@
-import { defineConfig } from 'astro/config';
-
+import { defineConfig } from "astro/config";
 import node from "@astrojs/node";
+import alpinejs from "@astrojs/alpinejs";
+import mdx from "@astrojs/mdx";
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,6 +11,7 @@ export default defineConfig({
   publicDir: "public/" + process.env.WEBSITE,
   output: "server",
   adapter: node({
-    mode: "standalone"
-  })
+    mode: "standalone",
+  }),
+  integrations: [alpinejs(), mdx(), tailwind()],
 });

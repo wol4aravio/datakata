@@ -1,16 +1,55 @@
 ---
+import RootLayout from "@common/layouts/RootLayout.astro";
+import MainCard from "../components/MainCard.astro";
 
+const title = "Валентин Пановский";
+const description =
+  "Специалист по работе с данными и машинному обучению, кандидат физико-математических наук, доцент Московского Авиационного Института";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro: Panovskiy</h1>
-	</body>
-</html>
+<RootLayout page_title={title} page_description={description}>
+  <div class="mx-auto flex min-h-[100dvh] max-w-2xl flex-col justify-center">
+    <div
+      class="mx-auto grid w-[90%] grid-cols-1 gap-4 p-4 sm:w-[80%] md:w-[100%] md:grid-cols-2"
+    >
+      <div>
+        <img
+          src="/me.jpg"
+          alt="Пановский Валентин"
+          class="m-auto aspect-square border-l-2 border-t-2 border-l-white border-t-white shadow-[-0.5rem_-0.5rem__rgba(0,0,0)]"
+        />
+      </div>
+      <MainCard
+        details="подробности >"
+        url="/cv"
+        icon="mdi:chart-scatter-plot-hexbin"
+      >
+        Chief Data Officer (директор по аналитике и управлению данными)
+      </MainCard>
+      <MainCard
+        details="об исследованиях >"
+        url="/science"
+        icon="mdi:account-school"
+      >
+        Доцент МАИ (НИУ), кандидат физико-математических наук
+      </MainCard>
+      <MainCard
+        details="о проекте >"
+        url="https://datakata.ru"
+        icon="mdi:space-invaders"
+      >
+        Независимый консультант и основатель проекта Data Kata
+      </MainCard>
+    </div>
+    <div class="container text-center">
+      Контакты: <a
+        href="https://t.me/panovskiy_v"
+        rel="nofollow"
+        target="_blank"
+        class="underline hover:decoration-2"
+      >
+        @panovskiy_v
+      </a>
+    </div>
+  </div>
+</RootLayout>
