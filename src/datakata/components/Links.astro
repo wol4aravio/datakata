@@ -1,0 +1,30 @@
+---
+const is_prod = Astro.url.toString().includes(Astro.site.toString());
+---
+
+<div class="mx-auto">
+  По вопросам сотрудничества:
+
+  <a
+    href="https://t.me/panovskiy_v"
+    rel="nofollow"
+    target="_blank"
+    class="animate-rainbow underline hover:font-bold hover:decoration-2"
+    >@panovskiy_v
+  </a>
+</div>
+<div class="mx-auto">
+  <a
+    href="https://t.me/data_kata"
+    rel="nofollow"
+    target="_blank"
+    class="text-black underline hover:font-bold hover:decoration-2">Телеграм канал проекта</a
+  >
+</div>
+<div class="mx-auto">
+  <a
+    href={is_prod ? "https://panovskiy.ru" : "https://dev.panovskiy.ru"}
+    class="underline hover:font-bold hover:decoration-2"
+    target="_blank">Об авторе проекта</a
+  >
+</div>

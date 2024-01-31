@@ -1,0 +1,38 @@
+---
+import Card from "./Card.astro";
+
+const prod_mode = !Astro.url.toString().includes("//dev.");
+---
+
+<div
+  class="my-6 grid w-full grid-cols-1 justify-items-center gap-4 px-6 md:grid-cols-3"
+>
+  <Card
+    title="Fox Driven"
+    icon="fox.png"
+    shadow_color="shadow-foxdriven-accent"
+    url={prod_mode ? "https://foxdriven.ru" : "https://dev.foxdriven.ru"}
+    url_text="перейти"
+  >
+    Блог по математике, программированию, анализу данных и машинному обучению
+  </Card>
+  <Card
+    title="Cyber Pony"
+    icon="pony.png"
+    shadow_color="shadow-cyberpony-accent"
+    url={prod_mode ? "https://cyberpony.ru" : "https://dev.cyberpony.ru"}
+    url_text="запустится в 2024"
+  >
+    Платформа для решения задач оптимизации
+  </Card>
+  <Card
+    title="Big Data Whale"
+    icon="whale.png"
+    shadow_color="shadow-bigdatawhale-accent"
+    url={prod_mode ? "https://bigdatawhale.ru" : "https://dev.bigdatawhale.ru"}
+    url_text="запустится в 2024"
+  >
+    Платформа для тренировки и знакомства с технологиями обработки и хранения
+    данных
+  </Card>
+</div>

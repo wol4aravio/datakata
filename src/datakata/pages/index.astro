@@ -1,16 +1,22 @@
 ---
+import MainLayout from "../layouts/MainLayout.astro";
 
+import Title from "../components/Title.astro";
+import ProjectsGrid from "../components/ProjectsGrid.astro";
+import Links from "../components/Links.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro: Data Kata</h1>
-	</body>
-</html>
+<MainLayout
+  page_title="Место, где данные обретают форму"
+  page_description="Платформы для работы с данными"
+>
+  <div class="flex h-full min-h-screen w-screen flex-col justify-between">
+    <div class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center">
+      <Title />
+      <ProjectsGrid />
+      <Links />
+    </div>
+    <div class="w-screen"><Footer /></div>
+  </div>
+</MainLayout>
