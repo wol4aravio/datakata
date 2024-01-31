@@ -1,0 +1,105 @@
+---
+import RootLayout from "@common/layouts/RootLayout.astro";
+import DetailCard from "../components/DetailCard.astro";
+
+const title = "Валентин Пановский: Научная работа и преподавание";
+const description = "Научная работа и основные публикации";
+---
+
+<RootLayout page_title={title} page_description={description}>
+  <div class="flex min-h-[100dvh] flex-col justify-center">
+    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 p-6">
+      <DetailCard header="Общее">
+        <div class="mb-4">
+          <ul class="list-disc pl-5">
+            <li>
+              доцент Московского Авиационного Института (НИУ), кандидат
+              физико-математических наук (<a
+                href="https://mai.ru/events/defence/?ELEMENT_ID=79506"
+                rel="nofollow"
+                target="blank"
+                class="underline hover:decoration-2">данные о защите</a
+              >)
+            </li>
+            <li>
+              автор более 50 работ, опубликованных в изданиях, входящих в
+              перечень ведущих научных журналов (ВАК) и реферативные базы данных
+              Scopus и Web of Science, и соавтор монографии
+            </li>
+            <li>
+              общий педагогический стаж и опыт ведения научных исследований -
+              более 10 лет
+            </li>
+          </ul>
+        </div>
+        <p class="text-xl">Основные преподаваемые курсы:</p>
+        <ul class="list-disc pl-5">
+          <li>Линейная алгебра и аналитическая геометрия</li>
+          <li>Теория оптимизации и численные методы</li>
+          <li>Анализ информационных процессов и технологий</li>
+          <li>Введение в язык программирования Python</li>
+        </ul>
+      </DetailCard>
+      <DetailCard header="Научные интересы и специализация">
+        <ul class="list-disc pl-5">
+          <li>эвристические алгоритмы оптимизации</li>
+          <li>кибернетика, математическое моделирование</li>
+          <li>машинное обучение, нейронные сети, обучение с подкреплением</li>
+        </ul>
+      </DetailCard>
+      <DetailCard header="Избранные публикации">
+        <ul class="list-disc pl-5">
+          <li>
+            <a
+              href="https://scholar.google.ru/citations?view_op=view_citation&hl=ru&user=XPm2b6kAAAAJ&citation_for_view=XPm2b6kAAAAJ:W7OEmFMy1HYC"
+              rel="nofollow"
+              target="blank"
+              class="underline hover:decoration-2">учебник</a
+            > для учащихся по программе бакалавриата (междунар.) "Linear Algebra
+            and Analytic Geometry", 2019
+          </li>
+          <li>
+            <a
+              href="https://link.springer.com/article/10.1134/S0005117919020115"
+              rel="nofollow"
+              target="blank"
+              class="underline hover:decoration-2">публикация</a
+            > в журнале "Automation and Remote Control", 2019
+          </li>
+          <li>
+            соавтор <a
+              href="https://novapublishers.com/shop/robust-and-constrained-optimization-methods-and-applications/"
+              rel="nofollow"
+              target="blank"
+              class="underline hover:decoration-2">книги</a
+            > "Robust and Constrained Optimization: Methods and Applications", 2019
+          </li>
+          <li>
+            соавтор <a
+              href="https://novapublishers.com/shop/interval-analysis-introduction-methods-and-applications/"
+              rel="nofollow"
+              target="blank"
+              class="underline hover:decoration-2">книги</a
+            > "Interval Analysis: Introduction, Methods and Applications", 2017
+          </li>
+        </ul>
+      </DetailCard>
+      <DetailCard header="Разработка программного обеспечения">
+        Автор двух зарегистрированных программных комплексов:
+        <ul class="list-disc pl-5">
+          <li>
+            Программа синтеза оптимального в среднем управления летательными
+            аппаратами с неполной обратной связью с использованием интервальных
+            методов глобальной оптимизации (свидетельство № 2016610641 от
+            15.01.2016)
+          </li>
+          <li>
+            Программыа для ЭВМ «Интервальные методы поиска оптимального
+            программного управления летательными аппаратами» (свидетельство №
+            2015661635, дата от 2.11.2015)
+          </li>
+        </ul>
+      </DetailCard>
+    </div>
+  </div>
+</RootLayout>
