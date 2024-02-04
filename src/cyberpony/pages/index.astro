@@ -1,16 +1,26 @@
 ---
+import MainLayout from "../layouts/MainLayout.astro";
 
+import Title from "../components/Title.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro: Cyber Pony</h1>
-	</body>
-</html>
+<MainLayout
+  page_title="Оптимизация"
+  page_description="Платформа для решения задач оптимизации"
+>
+  <div class="flex h-full min-h-screen w-screen flex-col justify-between">
+    <div
+      class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center"
+    >
+      <Title />
+      <hr
+        class="container mt-4 w-[40%] rounded-full border-t-4 border-cyberpony-accent"
+      />
+      <div class="mx-auto mt-4">Платформа для решения задач оптимизации</div>
+      <div class="mx-auto mt-4">Скоро запуск (:</div>
+      <img class="mx-auto mt-4 h-20 w-20" src="favicon.svg" />
+    </div>
+    <div class="w-screen"><Footer /></div>
+  </div>
+</MainLayout>
