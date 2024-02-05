@@ -1,29 +1,15 @@
 ---
 import "@common/styles/alpine.css";
+import DefaultLayout from "@common/layouts/DefaultLayout.astro";
 
 const { page_title, page_description } = Astro.props;
-const canonical_url = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{page_title + " / Cyber Pony"}</title>
-    <meta name="description" content={page_description} />
-    <meta name="yandex-verification" content="72da482b570c821a" />
-    <link rel="canonical" href={canonical_url} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=block"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="font-roboto-mono">
-    <slot />
-  </body>
-</html>
+<DefaultLayout
+  page_title={page_title}
+  page_description={page_description}
+  suffix=" / Cyber Pony"
+  yandex_verification="72da482b570c821a"
+>
+  <slot />
+</DefaultLayout>
