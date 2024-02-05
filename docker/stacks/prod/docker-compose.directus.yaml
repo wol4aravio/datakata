@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  directus:
+    image: directus/directus:10.8.3
+    restart: always
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - KEY=${KEY}
+      - SECRET=${SECRET}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - DB_CLIENT=${DB_CLIENT}
+      - DB_FILENAME=${DB_FILENAME}
+      - WEBSOCKETS_ENABLED=${WEBSOCKETS_ENABLED}
+    networks:
+      - datakata-network
+    volumes:
+      - /mnt/nfs_clientshare/directus_volume/database:/directus/database
+      - /mnt/nfs_clientshare/directus_volume/uploads:/directus/uploads
+      - /mnt/nfs_clientshare/directus_volume/extensions:/directus/extensions
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - "node.labels.env.prod==true"
+      resources:
+        reservations:
+          cpus: "0.25"
+          memory: 256mb
+        limits:
+          cpus: "1.0"
+          memory: 1024mb
+
+networks:
+  datakata-network:
+    external: true
