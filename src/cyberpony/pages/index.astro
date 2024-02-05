@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 
-import Title from "../components/Title.astro";
-import Footer from "../components/Footer.astro";
+import IndexTitle from "@common/components/IndexTitle.astro";
+import Footer from "@common/components/Footer.astro";
 ---
 
 <MainLayout
@@ -13,7 +13,7 @@ import Footer from "../components/Footer.astro";
     <div
       class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center"
     >
-      <Title />
+      <IndexTitle title="Cyber Pony" />
       <hr
         class="container mt-4 w-[40%] rounded-full border-t-4 border-cyberpony-accent"
       />

@@ -1,19 +1,21 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 
-import Title from "../components/Title.astro";
+import IndexTitle from "@common/components/IndexTitle.astro";
 import ProjectsGrid from "../components/ProjectsGrid.astro";
 import Links from "../components/Links.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <MainLayout
-  page_title="Место, где данные обретают форму"
+  page_title="Место, где данные обретают форму / Data Kata"
   page_description="Платформы для работы с данными"
 >
   <div class="flex h-full min-h-screen w-screen flex-col justify-between">
-    <div class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center">
-      <Title />
+    <div
+      class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center"
+    >
+      <IndexTitle title="Место, где данные обретают форму" />
       <ProjectsGrid />
       <Links />
     </div>
