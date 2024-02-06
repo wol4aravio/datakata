@@ -1,0 +1,20 @@
+---
+import MainLayout from "@panovskiy/layouts/MainLayout.astro";
+
+const title = "404";
+const description = "Зарпашиваемая страница не найдена :(";
+---
+
+<MainLayout page_title={title} page_description={description}>
+  <div class="flex min-h-[100dvh] w-screen flex-col justify-center text-center">
+    <div class="text-5xl">404</div>
+    <div>К сожалению, не нашли указанную страницу :(</div>
+    <div>
+      <a
+        href="/"
+        class="underline decoration-1 underline-offset-2 hover:decoration-2"
+        >Вернуться на главную</a
+      >
+    </div>
+  </div>
+</MainLayout>
