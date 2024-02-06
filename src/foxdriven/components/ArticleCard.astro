@@ -3,7 +3,6 @@ const { title, slug, year, tags = [], url, description } = Astro.props;
 
 const isExternal = slug ? false : true;
 const finalUrl = isExternal ? url : year + "/" + slug;
-console.log(title, slug, isExternal, finalUrl);
 const linkMode = isExternal ? "_blank" : "_self";
 const relMode = isExternal ? "nofollow" : "";
 const ribbonMode = isExternal ? "visible" : "hidden";
