@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   website_dev_panovskiy:
-    image: ghcr.io/wol4aravio/panovskiy:dev-0.0.10
+    image: ghcr.io/wol4aravio/panovskiy:dev-0.0.11
     labels:
       env: dev
     networks:

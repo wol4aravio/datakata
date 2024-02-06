@@ -1,6 +1,7 @@
 ---
 import "@common/styles/alpine.css";
 import DefaultLayout from "@common/layouts/DefaultLayout.astro";
+import Footer from "@common/components/Footer.astro";
 
 const { page_title, page_description } = Astro.props;
 ---
@@ -11,5 +12,8 @@ const { page_title, page_description } = Astro.props;
   suffix=" / Fox Driven"
   yandex_verification="719f922644efada5"
 >
-  <slot />
+  <div class="flex h-full min-h-screen w-screen flex-col justify-between">
+    <slot />
+    <div class="w-screen"><Footer /></div>
+  </div>
 </DefaultLayout>

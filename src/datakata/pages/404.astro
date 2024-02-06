@@ -1,16 +1,23 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import MainLayout from "@datakata/layouts/MainLayout.astro";
 
-import Footer from "../components/Footer.astro";
+import Footer from "@datakata/components/Footer.astro";
 ---
 
-<MainLayout page_title="Страница не найдена" page_description="Не смогли найти указанную страницу">
+<MainLayout
+  page_title="Страница не найдена"
+  page_description="Не смогли найти указанную страницу"
+>
   <div class="flex h-full min-h-screen w-screen flex-col justify-between">
-    <div class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center text-center">
+    <div
+      class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center text-center"
+    >
       <div class="text-4xl">404</div>
       <div class="mt-4">К сожалению, не нашли указанную страницу :(</div>
       <div class="mt-4">
-        <a href="/" class="underline decoration-1 underline-offset-2 hover:decoration-2"
+        <a
+          href="/"
+          class="underline decoration-1 underline-offset-2 hover:decoration-2"
           >Вернуться на главную</a
         >
       </div>

@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/DocumentLayout.astro
+layout: "@datakata/layouts/DocumentLayout.astro"
 page_title: Пользовательское соглашение
 page_description: Правовая информация и политики в отношении персональных данных
 ---

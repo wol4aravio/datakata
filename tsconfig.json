@@ -3,12 +3,18 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@common/*": ["common/*"]
+      "@common/*": ["common/*"],
+      "@datakata/*": ["src/datakata/*"],
+      "@panovskiy/*": ["src/panovskiy/*"],
+      "@bigdatawhale/*": ["src/bigdatawhale/*"],
+      "@cyberpony/*": ["src/cyberpony/*"],
+      "@foxdriven/*": ["src/foxdriven/*"],
     },
     "plugins": [
       {
-        "name": "@astrojs/ts-plugin"
+        "name": "@astrojs/ts-plugin",
       },
     ],
-  }
+  },
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.astro"],
 }

@@ -2,7 +2,9 @@
 import MainLayout from "@foxdriven/layouts/MainLayout.astro";
 
 import IndexTitle from "@common/components/IndexTitle.astro";
-import Footer from "@common/components/Footer.astro";
+
+const url = await import.meta.env.CMS_URL;
+console.log(url);
 ---
 
 <MainLayout
@@ -23,6 +25,5 @@ import Footer from "@common/components/Footer.astro";
       </div>
       <img class="mx-auto mt-4 h-20 w-20" src="favicon.svg" />
     </div>
-    <div class="w-screen"><Footer /></div>
   </div>
 </MainLayout>
