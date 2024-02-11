@@ -1,0 +1,19 @@
+---
+import MainLayout from "@foxdriven/layouts/MainLayout.astro";
+
+const { title, description } = Astro.props;
+---
+
+<MainLayout page_title={title} page_description={description}>
+  <div class="mx-auto max-w-7xl">
+    <div
+      class="container mb-12 w-[90%] border-b-2 border-foxdriven-accent pb-4 text-center text-3xl font-bold"
+    >
+      {title}
+    </div>
+    <div id="article-body" class="px-4">
+      <slot />
+    </div>
+  </div>
+  <script src="../scripts/article_formatter.js"></script>
+</MainLayout>

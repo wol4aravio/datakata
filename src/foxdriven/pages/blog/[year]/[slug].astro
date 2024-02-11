@@ -1,0 +1,53 @@
+---
+import { readItems, refresh } from "@directus/sdk";
+import { directusClient, $refreshToken } from "@foxdriven/scripts/directus";
+import { unified } from "unified";
+import rehypeMathjax from "rehype-mathjax";
+import remarkMath from "remark-math";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
+import rehypeKatex from "rehype-katex";
+
+import ArticleLayout from "@foxdriven/layouts/ArticleLayout.astro";
+
+const { year, slug } = Astro.params;
+
+let article;
+let failed = false;
+
+const query = {
+  filter: {
+    slug: {
+      _eq: slug,
+    },
+  },
+};
+
+try {
+  article = (await directusClient.request(readItems("articles", query)))[0];
+} catch (e) {
+  const result = await directusClient.request(
+    refresh("json", $refreshToken.get()),
+  );
+  $refreshToken.set(result["refresh_token"]?.toString());
+  failed = true;
+} finally {
+  if (failed) {
+    article = (await directusClient.request(readItems("articles", query)))[0];
+  }
+}
+
+const content = await unified()
+  .use(remarkParse)
+  .use(remarkMath)
+  .use(remarkRehype)
+  .use(rehypeMathjax)
+  .use(rehypeKatex)
+  .use(rehypeStringify)
+  .process(article.body);
+---
+
+<ArticleLayout title={article.title} description={article.description}>
+  <article set:html={String(content)} />
+</ArticleLayout>
