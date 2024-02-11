@@ -1,26 +1,44 @@
 ---
-import { readItems } from "@directus/sdk";
-import { directusClient } from "@foxdriven/scripts/directus";
+import { readItems, refresh } from "@directus/sdk";
+import { directusClient, $refreshToken } from "@foxdriven/scripts/directus";
 import isProd from "@common/scripts/tools";
 
 import MainLayout from "@foxdriven/layouts/MainLayout.astro";
 import ArticleCard from "@foxdriven/components/ArticleCard.astro";
 
 let articles: Record<string, any>[] = [];
+let query = {};
+
 if (isProd(Astro.url.toString())) {
-  articles = await directusClient.request(
-    readItems("articles", {
-      filter: {
-        prod: {
-          _eq: true,
-        },
+  query = {
+    filter: {
+      prod: {
+        _eq: true,
       },
-    }),
-  );
-} else {
-  articles = await directusClient.request(readItems("articles"));
+    },
+  };
 }
-console.log(isProd(Astro.url.toString()));
+
+let failed = false;
+try {
+  console.log("using token: ", $refreshToken.get());
+  articles = await directusClient.request(readItems("articles", query));
+  console.log("success");
+} catch (e) {
+  console.log("refreshing token");
+  const result = await directusClient.request(
+    refresh("json", $refreshToken.get()),
+  );
+  $refreshToken.set(result["refresh_token"]?.toString());
+  console.log("success");
+  failed = true;
+} finally {
+  if (failed) {
+    console.log("using new token: ", $refreshToken.get());
+    articles = await directusClient.request(readItems("articles", query));
+    console.log("success");
+  }
+}
 ---
 
 <MainLayout page_title="Блог" page_description="Все публикации">
