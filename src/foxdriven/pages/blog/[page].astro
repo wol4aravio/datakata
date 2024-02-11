@@ -21,6 +21,11 @@ if (isProd(Astro.url.toString())) {
         _eq: true,
       },
     },
+    sort: ["-year", "title"],
+  };
+} else {
+  query = {
+    sort: ["-year", "title"],
   };
 }
 
@@ -38,6 +43,8 @@ try {
     articles = await directusClient.request(readItems("articles", query));
   }
 }
+
+console.log(articles);
 
 let prevPage = "/blog/" + Math.max(1, pageValue - 1).toString();
 let curPage = "/blog/" + pageValue.toString();
