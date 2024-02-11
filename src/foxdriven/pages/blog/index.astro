@@ -1,11 +1,26 @@
 ---
 import { readItems } from "@directus/sdk";
 import { directusClient } from "@foxdriven/scripts/directus";
+import isProd from "@common/scripts/tools";
 
 import MainLayout from "@foxdriven/layouts/MainLayout.astro";
 import ArticleCard from "@foxdriven/components/ArticleCard.astro";
 
-const articles = await directusClient.request(readItems("articles"));
+let articles: Record<string, any>[] = [];
+if (isProd(Astro.url.toString())) {
+  articles = await directusClient.request(
+    readItems("articles", {
+      filter: {
+        prod: {
+          _eq: true,
+        },
+      },
+    }),
+  );
+} else {
+  articles = await directusClient.request(readItems("articles"));
+}
+console.log(isProd(Astro.url.toString()));
 ---
 
 <MainLayout page_title="Блог" page_description="Все публикации">
@@ -18,6 +33,7 @@ const articles = await directusClient.request(readItems("articles"));
           return (
             <ArticleCard
               title={article.title}
+              prod={article.prod}
               slug={article.slug}
               year={article.year}
               url={article.url}

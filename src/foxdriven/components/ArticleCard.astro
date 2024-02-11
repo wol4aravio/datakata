@@ -1,11 +1,13 @@
 ---
-const { title, slug, year, tags = [], url, description } = Astro.props;
+const { title, prod, slug, year, tags = [], url, description } = Astro.props;
 
 const isExternal = slug ? false : true;
+const isDev = prod ? false : true;
 const finalUrl = isExternal ? url : year + "/" + slug;
 const linkMode = isExternal ? "_blank" : "_self";
 const relMode = isExternal ? "nofollow" : "";
 const ribbonMode = isExternal ? "visible" : "hidden";
+const devRibbonMode = isDev ? "visible" : "hidden";
 const cropFirstLine = isExternal ? "mr-2" : "";
 ---
 
@@ -37,6 +39,13 @@ const cropFirstLine = isExternal ? "mr-2" : "";
         class="flex h-fit w-32 translate-x-[40%] translate-y-[10%] rotate-45 flex-col justify-center rounded-md bg-foxdriven-accent/50 p-1 text-center text-2xs"
       >
         ext
+      </div>
+    </div>
+    <div class=`absolute top-0 right-0 ${devRibbonMode}`>
+      <div
+        class="flex h-fit w-32 translate-x-[20%] translate-y-[140%] rotate-45 flex-col justify-center rounded-md bg-red-500 p-1 text-center text-2xs"
+      >
+        DEV
       </div>
     </div>
   </div>
