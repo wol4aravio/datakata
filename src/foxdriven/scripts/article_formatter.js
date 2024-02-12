@@ -10,7 +10,7 @@ const tagsFormat = {
   h3: ["container", "text-center", "font-semibold", "text-xl", "my-2"],
   p: ["container", "py-2", "text-justify"],
   a: ["underline", "decoration-2"],
-  ul: ["list-disc", "list-inside", "text-justify"],
+  ul: ["container", "list-disc", "list-inside", "text-justify"],
   ol: ["container", "list-decimal", "list-inside", "text-justify"],
   img: ["container"],
 };
