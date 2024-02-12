@@ -11,7 +11,7 @@ const tagsFormat = {
   p: ["container", "py-2", "text-justify"],
   a: ["underline", "decoration-2"],
   ul: ["list-disc", "list-inside", "text-justify"],
-  ol: ["list-decimal", "list-inside", "text-justify"],
+  ol: ["container", "list-decimal", "list-inside", "text-justify"],
   img: ["container"],
 };
 
