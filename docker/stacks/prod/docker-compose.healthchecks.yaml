@@ -3,6 +3,8 @@ services:
   healthchecks:
     image: healthchecks/healthchecks:v3.2
     container_name: healthchecks
+    networks:
+      - datakata-network
     environment:
       - DB=sqlite
       - DB_NAME=/data/hc.sqlite
@@ -20,3 +22,7 @@ services:
       placement:
         constraints:
           - node.role == manager
+
+networks:
+  datakata-network:
+    external: true
