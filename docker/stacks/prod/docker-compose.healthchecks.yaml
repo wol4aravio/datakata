@@ -7,10 +7,6 @@ services:
     restart: always
     networks:
       - datakata-network
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
     volumes:
       - ./healthchecks_data:/config
     deploy:
