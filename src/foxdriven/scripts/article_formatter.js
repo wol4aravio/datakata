@@ -16,14 +16,12 @@ const tagsFormat = {
 };
 
 [...articleBody.getElementsByClassName("MathJax")].forEach((e) => {
-  console.log(e);
   const width = e.attributes["width"]?.value;
   if (width == "full") {
     e.innerHTML = '<div class="math-display">' + e.innerHTML + "</div>";
   } else {
     e.innerHTML = '<span class="math-inline">' + e.innerHTML + "</span>";
   }
-  console.log(width);
 });
 
 const classFormat = {

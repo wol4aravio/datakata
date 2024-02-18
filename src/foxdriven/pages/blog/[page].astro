@@ -7,7 +7,7 @@ import ArticleCard from "@foxdriven/components/ArticleCard.astro";
 import PageNavigationButton from "@foxdriven/components/PageNavigationButton.astro";
 
 const { page } = Astro.params;
-const pageValue = parseInt(page ? page : "0");
+const pageValue = page ? page : 0;
 const pageSize = 6;
 
 const articles = await getArticles(isProd(Astro.url.toString()));
@@ -17,6 +17,15 @@ let curPage = "/blog/" + pageValue.toString();
 let nextPage =
   "/blog/" +
   Math.min(Math.ceil(articles.length / pageSize), pageValue + 1).toString();
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const articles = await getArticles(true);
+  const pageSize = 6;
+  return [...Array(Math.ceil(articles.length / pageSize)).keys()].map((k) => {
+    return { params: { page: k + 1 } };
+  });
+}
 
 const isFirstPage = pageValue == 1 ? "hidden" : "visible";
 const isLastPage =
