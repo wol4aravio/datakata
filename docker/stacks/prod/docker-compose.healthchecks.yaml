@@ -9,7 +9,7 @@ services:
       - DB=sqlite
       - DB_NAME=/data/hc.sqlite
       - DEBUG=False
-      - SITE_ROOT=http://0.0.0.0:8000
+      - SITE_ROOT=http://localhost:8000
     restart: unless-stopped
     deploy:
       resources:
