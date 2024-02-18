@@ -1,0 +1,71 @@
+---
+import { getArticles } from "@foxdriven/scripts/directus";
+import isProd from "@common/scripts/tools";
+
+import MainLayout from "@foxdriven/layouts/MainLayout.astro";
+import ArticleCard from "@foxdriven/components/ArticleCard.astro";
+import PageNavigationButton from "@foxdriven/components/PageNavigationButton.astro";
+
+const { page } = Astro.params;
+const pageValue = page ? page : 0;
+const pageSize = 6;
+
+const articles = await getArticles(isProd(Astro.url.toString()));
+
+let prevPage = "/blog/" + Math.max(1, pageValue - 1).toString();
+let curPage = "/blog/" + pageValue.toString();
+let nextPage =
+  "/blog/" +
+  Math.min(Math.ceil(articles.length / pageSize), pageValue + 1).toString();
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const articles = await getArticles(true);
+  const pageSize = 6;
+  return [...Array(Math.ceil(articles.length / pageSize)).keys()].map((k) => {
+    return { params: { page: k + 1 } };
+  });
+}
+
+const isFirstPage = pageValue == 1 ? "hidden" : "visible";
+const isLastPage =
+  pageValue == Math.ceil(articles.length / pageSize) ? "hidden" : "visible";
+
+const articlesPaginated = articles.slice(
+  (pageValue - 1) * pageSize,
+  pageValue * pageSize,
+);
+---
+
+<MainLayout page_title="Блог" page_description="Все публикации">
+  <div class="mx-auto w-[80%] p-8 md:w-full">
+    <div
+      class="mx-auto grid max-w-7xl grid-cols-1 justify-between gap-8 md:grid-cols-2"
+    >
+      {
+        articlesPaginated.map((article) => {
+          return (
+            <ArticleCard
+              title={article.title}
+              prod={article.prod}
+              slug={article.slug}
+              year={article.year}
+              url={article.url}
+              tags={article.tags}
+              description={article.description}
+            />
+          );
+        })
+      }
+    </div>
+    <div class="mt-4 flex flex-row justify-center gap-4">
+      <div class={isFirstPage}>
+        <PageNavigationButton text="< сюда" link={prevPage} />
+      </div>
+      <PageNavigationButton text={page} link={curPage} />
+      <div class={isLastPage}>
+        <PageNavigationButton text="туда >" link={nextPage} />
+      </div>
+    </div>
+  </div>
+</MainLayout>

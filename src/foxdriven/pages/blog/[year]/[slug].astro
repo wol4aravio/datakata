@@ -1,0 +1,49 @@
+---
+import { getArticles } from "@foxdriven/scripts/directus";
+import { unified } from "unified";
+import rehypeMathjax from "rehype-mathjax";
+import remarkMath from "remark-math";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
+import rehypeKatex from "rehype-katex";
+
+import ArticleLayout from "@foxdriven/layouts/ArticleLayout.astro";
+import isProd from "@common/scripts/tools";
+
+let articles: Record<string, any> = await getArticles(
+  isProd(Astro.url.toString()),
+);
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const articles = (await getArticles(true)).filter(
+    (a: Record<string, any>) => {
+      return a.slug != null;
+    },
+  );
+  return [
+    ...articles.map((a: Record<string, any>) => {
+      return { params: { year: a.year, slug: a.slug } };
+    }),
+  ];
+}
+
+const { year, slug } = Astro.params;
+const article = articles.filter((a: Record<string, any>) => {
+  return a.year == year && a.slug == slug;
+})[0];
+
+const content = await unified()
+  .use(remarkParse)
+  .use(remarkMath)
+  .use(remarkRehype)
+  .use(rehypeMathjax)
+  .use(rehypeKatex)
+  .use(rehypeStringify)
+  .process(article.body);
+---
+
+<ArticleLayout title={article.title} description={article.description}>
+  <article set:html={String(content)} />
+</ArticleLayout>

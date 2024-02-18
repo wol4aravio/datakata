@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   website_dev_foxdriven:
-    image: ghcr.io/wol4aravio/foxdriven:dev-0.0.4
+    image: ghcr.io/wol4aravio/foxdriven:dev-0.0.6
     labels:
       env: dev
     networks:

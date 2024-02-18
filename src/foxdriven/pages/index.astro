@@ -1,28 +1,60 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import MainLayout from "@foxdriven/layouts/MainLayout.astro";
 
 import IndexTitle from "@common/components/IndexTitle.astro";
-import Footer from "@common/components/Footer.astro";
 ---
 
 <MainLayout
   page_title="Анализ данных"
   page_description="Блог по математике, программированию, анализу данных и машинному обучению"
+  visible_header={false}
 >
-  <div class="flex h-full min-h-screen w-screen flex-col justify-between">
-    <div
-      class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center"
-    >
-      <IndexTitle title="Fox Driven" />
-      <hr
-        class="container mt-4 w-[40%] rounded-full border-t-4 border-foxdriven-accent"
-      />
-      <div class="mx-auto mt-4">
+  <div class="mx-auto mt-4 flex w-full max-w-7xl grow flex-col justify-center">
+    <IndexTitle title="Fox Driven" />
+    <div class="mx-4">
+      <div
+        class="mx-auto mt-4 border-b-4 border-foxdriven-accent pb-2 text-center"
+      >
         Блог по математике, программированию, анализу данных и машинному
         обучению
       </div>
-      <img class="mx-auto mt-4 h-20 w-20" src="favicon.svg" />
     </div>
-    <div class="w-screen"><Footer /></div>
+    <div class="mt-4 w-full px-6 text-justify text-xs md:text-base">
+      В наше время можно часто услышать, что "данные - это новая нефть",
+      "будущее за большими данными" и тому подобное. Может сложиться
+      впечатление, что только в XXI веке люди осознали ценность информации и
+      стали задаваться вопросом, возможно ли не только заниматься
+      накопительством, но и извлекать из него ощутимую пользу. Но на самом деле
+      мы живём бок о бок с данными уже очень давно (просто раньше они имели
+      другую форму, порой даже физическую):
+      <ul class="ml-4 list-disc">
+        <li>
+          огромные архивы личных дел и медицинских карт в организациях
+          здравоохранения,
+        </li>
+        <li>исторические данные биржевых брокеров,</li>
+        <li>телеметрия летательных и космических аппаратов,</li>
+        <li>телефонные справочники,</li>
+        <li>многое другое.</li>
+      </ul>
+      <div class="mt-2">
+        Так что, как видите, в действительности поменялась лишь доступность, а
+        произошло это во многом благодаря развитию технологий и удешевлению
+        вычислительных мощностей. А раз теперь буквально каждый при наличии
+        компьютера, времени и желания может начать заниматься анализом данных,
+        то почему бы не помочь таким любопытствующим и не показать им всю широту
+        разнообразия науки о данных как профессиональной и академической
+        дисциплины? Именно с этого вопроса и появилось желание создать этот
+        сайт, где будет представлен различный материал, посвящённый Data Science
+        и другим дисциплинам, так или иначе связанным с этим направлением.
+      </div>
+    </div>
+    <a
+      href="/blog"
+      class="my-4 text-center text-foxdriven-accent hover:underline hover:decoration-foxdriven-accent"
+    >
+      Перейти к публикациям
+    </a>
+    <img class="mx-auto h-20 w-20" src="favicon.svg" />
   </div>
 </MainLayout>
