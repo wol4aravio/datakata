@@ -6,9 +6,11 @@ services:
       env: dev
     networks:
       - datakata-network
+    environment:
+      - HEALTHCHECK_URL=${HEALTHCHECK_URL}
     healthcheck:
-      test: curl --fail http://0.0.0.0:3000/health || exit 1
-      interval: 60s
+      test: (curl --fail $HEALTHCHECK_URL && curl --fail http://0.0.0.0:3000/health) || exit 1
+      interval: 30s
       retries: 5
       start_period: 10s
       timeout: 10s
