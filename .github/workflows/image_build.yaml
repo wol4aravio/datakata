@@ -39,6 +39,7 @@ jobs:
           expand: "true"
       - name: Show default environment variables
         run: |
+          echo "script test: ${{ github.ref == 'refs/heads/main' }}"
           echo "ref: ${{ github.ref }}"
           echo "website: ${{ env.WEBSITE }}"
           echo "suffix: ${{ env.BUILD_SUFFIX }}"
