@@ -54,6 +54,10 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: ghcr.io/wol4aravio/${{ env.WEBSITE }}:${{ env.BUILD_SUFFIX }}${{ env.VERSION }}
+          build-args: |
+            CMS_URL=${{ secrets.CMS_URL }}
+            CMS_USER=${{ secrets.CMS_USER }}
+            CMS_PASSWORD=${{ secrets.CMS_PASSWORD }}
           labels: |
             website=${{ env.WEBSITE }}
             env=${{ env.RUNTIME_ENVIRONMENT }}
