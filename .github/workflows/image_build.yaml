@@ -37,6 +37,11 @@ jobs:
         with:
           envFile: "env_files/${{ matrix.site }}.env"
           expand: "true"
+      - name: Show default environment variables
+        run: |
+          echo "website: ${{ env.WEBSITE }}"
+          echo "suffix: ${{ env.BUILD_SUFFIX }}"
+          echo "version: ${{ env.VERSION }}"
       - name: Check version
         uses: tyriis/docker-image-tag-exists@v2.0.0
         id: image_exists
