@@ -1,16 +1,18 @@
 version: "3.8"
+
 services:
   healthchecks:
-    image: healthchecks/healthchecks:v3.2
+    image: linuxserver/healthchecks:3.2.20240209
     container_name: healthchecks
+    restart: always
     networks:
       - datakata-network
     environment:
-      - DB=sqlite
-      - DB_NAME=/data/hc.sqlite
-      - DEBUG=False
-      - SITE_ROOT=http://localhost:8000
-    restart: unless-stopped
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./healthchecks_data:/config
     deploy:
       resources:
         limits:
