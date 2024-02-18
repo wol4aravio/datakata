@@ -1,9 +1,10 @@
 ---
 import "@common/styles/alpine.css";
 import DefaultLayout from "@common/layouts/DefaultLayout.astro";
+import Header from "@common/components/Header.astro";
 import Footer from "@common/components/Footer.astro";
 
-const { page_title, page_description } = Astro.props;
+const { page_title, page_description, visible_header = true } = Astro.props;
 ---
 
 <DefaultLayout
@@ -13,6 +14,13 @@ const { page_title, page_description } = Astro.props;
   yandex_verification="719f922644efada5"
 >
   <div class="flex min-h-[100dvh] w-screen flex-col justify-between">
+    <div class="w-full">
+      <Header is_visible={visible_header}>
+        <div class="mx-auto text-center font-bold text-foxdriven-accent">
+          Fox Driven
+        </div>
+      </Header>
+    </div>
     <slot />
     <div class="w-screen"><Footer /></div>
   </div>
