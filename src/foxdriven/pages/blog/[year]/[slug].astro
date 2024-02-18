@@ -1,6 +1,6 @@
 ---
 import { readItems, refresh } from "@directus/sdk";
-import { directusClient, $refreshToken } from "@foxdriven/scripts/directus";
+import { getArticles } from "@foxdriven/scripts/directus";
 import { unified } from "unified";
 import rehypeMathjax from "rehype-mathjax";
 import remarkMath from "remark-math";
@@ -10,32 +10,22 @@ import remarkParse from "remark-parse";
 import rehypeKatex from "rehype-katex";
 
 import ArticleLayout from "@foxdriven/layouts/ArticleLayout.astro";
+import isProd from "@common/scripts/tools";
 
 const { year, slug } = Astro.params;
 
-let article;
-let failed = false;
+const articles = await getArticles(isProd(Astro.url.toString()));
+const article = articles.filter((a) => {
+  // console.log(a.slug, a.slug == slug);
+  return a.year == year && a.slug == slug;
+})[0];
 
-const query = {
-  filter: {
-    slug: {
-      _eq: slug,
-    },
-  },
-};
-
-try {
-  article = (await directusClient.request(readItems("articles", query)))[0];
-} catch (e) {
-  const result = await directusClient.request(
-    refresh("json", $refreshToken.get()),
-  );
-  $refreshToken.set(result["refresh_token"]?.toString());
-  failed = true;
-} finally {
-  if (failed) {
-    article = (await directusClient.request(readItems("articles", query)))[0];
-  }
+export async function getStaticPaths() {
+  return [
+    ...articles.map((a) => {
+      return { params: { year: a.year, slug: a.slug } };
+    }),
+  ];
 }
 
 const content = await unified()

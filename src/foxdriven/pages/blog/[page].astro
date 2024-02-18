@@ -1,6 +1,5 @@
 ---
-import { readItems, refresh } from "@directus/sdk";
-import { directusClient, $refreshToken } from "@foxdriven/scripts/directus";
+import { getArticles } from "@foxdriven/scripts/directus";
 import isProd from "@common/scripts/tools";
 
 import MainLayout from "@foxdriven/layouts/MainLayout.astro";
@@ -11,38 +10,7 @@ const { page } = Astro.params;
 const pageValue = parseInt(page ? page : "0");
 const pageSize = 6;
 
-let articles: Record<string, any>[] = [];
-let query = {};
-
-if (isProd(Astro.url.toString())) {
-  query = {
-    filter: {
-      prod: {
-        _eq: true,
-      },
-    },
-    sort: ["-year", "title"],
-  };
-} else {
-  query = {
-    sort: ["-year", "title"],
-  };
-}
-
-let failed = false;
-try {
-  articles = await directusClient.request(readItems("articles", query));
-} catch (e) {
-  const result = await directusClient.request(
-    refresh("json", $refreshToken.get()),
-  );
-  $refreshToken.set(result["refresh_token"]?.toString());
-  failed = true;
-} finally {
-  if (failed) {
-    articles = await directusClient.request(readItems("articles", query));
-  }
-}
+const articles = await getArticles(isProd(Astro.url.toString()));
 
 let prevPage = "/blog/" + Math.max(1, pageValue - 1).toString();
 let curPage = "/blog/" + pageValue.toString();
