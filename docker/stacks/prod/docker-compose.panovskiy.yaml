@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  website_dev_panovskiy:
+    image: ghcr.io/wol4aravio/panovskiy:0.0.11
+    labels:
+      env: dev
+    networks:
+      - datakata-network
+    healthcheck:
+      test: curl --fail http://0.0.0.0:3000/health || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 10s
+      timeout: 10s
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 0
+        order: stop-first
+      restart_policy:
+        condition: any
+        delay: 10s
+        max_attempts: 3
+        window: 60s
+      placement:
+        constraints:
+          - "node.labels.env.prod==true"
+      resources:
+        reservations:
+          cpus: "0.2"
+          memory: 128mb
+        limits:
+          cpus: "0.5"
+          memory: 256mb
+
+networks:
+  datakata-network:
+    external: true
