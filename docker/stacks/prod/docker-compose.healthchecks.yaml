@@ -4,6 +4,8 @@ services:
   healthchecks:
     image: linuxserver/healthchecks:3.2.20240209
     container_name: healthchecks
+    ports:
+      - 8000:8000
     restart: always
     environment:
       - PUID=${PUID}
