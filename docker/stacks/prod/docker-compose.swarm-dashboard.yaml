@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  swarm-dashboard:
+  swarm_dashboard:
     image: mohsenasm/swarm-dashboard:v2.2
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -12,7 +12,7 @@ services:
         constraints:
           - node.role == manager
 
-  node-exporter:
+  node_exporter:
     image: quay.io/prometheus/node-exporter:v1.6.1
     volumes:
       - "/:/host:ro"
