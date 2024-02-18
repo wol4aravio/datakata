@@ -43,6 +43,7 @@ jobs:
           echo "script test full: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}"
           echo "ref: ${{ github.ref }}"
           echo "website: ${{ env.WEBSITE }}"
+          echo "runtime: ${{ env.RUNTIME_ENVIRONMENT }}"
           echo "suffix: ${{ env.BUILD_SUFFIX }}"
           echo "version: ${{ env.VERSION }}"
       - name: Check version
