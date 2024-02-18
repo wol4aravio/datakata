@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  healthchecks:
+    image: healthchecks/healthchecks:v3.2
+    container_name: healthchecks
+    environment:
+      - DB=sqlite
+      - DB_NAME=/data/hc.sqlite
+      - DEBUG=False
+    ports:
+      - 8000:8000
+    restart: unless-stopped
