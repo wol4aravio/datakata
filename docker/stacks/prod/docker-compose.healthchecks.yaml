@@ -10,3 +10,14 @@ services:
     ports:
       - 8000:8000
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 128M
+        reservations:
+          cpus: "0.25"
+          memory: 64M
+      placement:
+        constraints:
+          - node.role == manager
