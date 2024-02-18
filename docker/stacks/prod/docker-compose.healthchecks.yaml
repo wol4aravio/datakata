@@ -10,13 +10,6 @@ services:
     volumes:
       - ./healthchecks_data:/config
     deploy:
-      resources:
-        limits:
-          cpus: "0.75"
-          memory: 256M
-        reservations:
-          cpus: "0.25"
-          memory: 128M
       placement:
         constraints:
           - node.role == manager
