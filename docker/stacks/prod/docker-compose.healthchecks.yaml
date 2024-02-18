@@ -5,6 +5,15 @@ services:
     image: linuxserver/healthchecks:3.2.20240209
     container_name: healthchecks
     restart: always
+    environment:
+      - PUID:${PUID}
+      - PGID:${PGID}
+      - TZ:${TZ}
+      - SITE_ROOT:${SITE_ROOT}
+      - SITE_NAME:${SITE_NAME}
+      - SUPERUSER_EMAIL:${SUPERUSER_EMAIL}
+      - SUPERUSER_PASSWORD:${SUPERUSER_PASSWORD}
+      - DEBUG:${DEBUG}
     networks:
       - datakata-network
     volumes:
