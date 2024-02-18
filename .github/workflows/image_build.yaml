@@ -39,6 +39,7 @@ jobs:
           expand: "true"
       - name: Show default environment variables
         run: |
+          echo "ref: ${{ github.ref }}"
           echo "website: ${{ env.WEBSITE }}"
           echo "suffix: ${{ env.BUILD_SUFFIX }}"
           echo "version: ${{ env.VERSION }}"
