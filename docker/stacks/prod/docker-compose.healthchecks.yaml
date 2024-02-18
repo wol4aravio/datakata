@@ -10,7 +10,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - SITE_ROOT=${SITE_ROOT}
-      - SITE_NAM=${SITE_NAME}
+      - SITE_NAME=${SITE_NAME}
       - SUPERUSER_EMAIL=${SUPERUSER_EMAIL}
       - SUPERUSER_PASSWORD=${SUPERUSER_PASSWORD}
       - DEBUG=${DEBUG}
