@@ -7,8 +7,6 @@ services:
       - DB=sqlite
       - DB_NAME=/data/hc.sqlite
       - DEBUG=False
-    ports:
-      - 8000:8000
     restart: unless-stopped
     deploy:
       resources:
