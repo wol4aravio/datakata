@@ -1,0 +1,39 @@
+---
+import MainLayout from "@cyberpony/layouts/MainLayout.astro";
+import AlgorithmCard from "@cyberpony/components/AlgorithmCard.astro";
+
+const algorithms = [
+  {
+    name: "Black Hole Optimization",
+    tags: ["tag_1", "tag_2"],
+  },
+  {
+    name: "Explosion Search",
+    tags: ["tag_1", "tag_2"],
+  },
+  {
+    name: "Flower Pollination Algorithm",
+    tags: ["tag_1", "tag_2"],
+  },
+  {
+    name: "Random Search",
+    tags: ["tag_1", "tag_2"],
+  },
+  {
+    name: "Particle Swarm Optimization",
+    tags: ["tag_1", "tag_2"],
+  },
+];
+---
+
+<MainLayout>
+  <div class="w-[70%] md:w-[100%]">
+    <div class="gird-cols-1 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        algorithms.map((a) => {
+          return <AlgorithmCard title={a.name} tags={a.tags} />;
+        })
+      }
+    </div>
+  </div>
+</MainLayout>
