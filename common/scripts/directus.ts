@@ -68,5 +68,5 @@ export async function getArticles(
 export async function getAlgorithms(
   isProd: Boolean,
 ): Promise<Record<string, any>[]> {
-  return getElementsFromCollection(isProd, "name", ["algorithmsz"]);
+  return getElementsFromCollection(isProd, "algorithms", ["name"]);
 }

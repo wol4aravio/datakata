@@ -1,7 +1,7 @@
 ---
 import TagPill from "@cyberpony/components/TagPill.astro";
 
-const { title, tags, url = "/" } = Astro.props;
+const { title, tags, url = "/", prod } = Astro.props;
 ---
 
 <a
@@ -11,12 +11,27 @@ const { title, tags, url = "/" } = Astro.props;
   <div
     class="h-full text-center text-base font-semibold decoration-cyberpony-accent decoration-2 hover:underline md:text-lg"
   >
-    {title}
-  </div>
-  <div class="flex flex-row gap-2">
     {
-      tags.map((t) => {
-        return <TagPill tag={t} />;
+      prod ? (
+        title
+      ) : (
+        <>
+          <span class="bg-cyberpony-accent">[DEV]</span>
+          {title}
+        </>
+      )
+    }
+  </div>
+  <div class="flex flex-row">
+    <TagPill tag={tags[0]} />
+    {
+      tags.slice(1).map((t: string) => {
+        return (
+          <>
+            <span class="font-bold text-cyberpony-accent">/</span>
+            <TagPill tag={t} />
+          </>
+        );
       })
     }
   </div>

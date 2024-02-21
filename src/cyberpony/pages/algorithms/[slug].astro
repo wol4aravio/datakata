@@ -1,0 +1,50 @@
+---
+import { getAlgorithms } from "@common/scripts/directus";
+import { unified } from "unified";
+import rehypeMathjax from "rehype-mathjax";
+import remarkMath from "remark-math";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
+import rehypeKatex from "rehype-katex";
+
+import AlgorithmLayout from "@cyberpony/layouts/AlgorithmLayout.astro";
+import isProd from "@common/scripts/tools";
+
+let algorithms: Record<string, any> = await getAlgorithms(
+  isProd(Astro.url.toString()),
+);
+
+console.log(algorithms);
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const algorithms = await getAlgorithms(true);
+  return [
+    ...algorithms.map((a: Record<string, any>) => {
+      return { params: { slug: a.slug } };
+    }),
+  ];
+}
+
+const { slug } = Astro.params;
+const algorithm = algorithms.filter((a: Record<string, any>) => {
+  return a.slug == slug;
+})[0];
+
+console.log(algorithms);
+console.log(slug, algorithm);
+
+// const content = await unified()
+//   .use(remarkParse)
+//   .use(remarkMath)
+//   .use(remarkRehype)
+//   .use(rehypeMathjax)
+//   .use(rehypeKatex)
+//   .use(rehypeStringify)
+//   .process(algorithm.body);
+---
+
+<AlgorithmLayout title={algorithm.title} description={algorithm.description}>
+  <div>Lorem Ipsum</div>
+</AlgorithmLayout>
