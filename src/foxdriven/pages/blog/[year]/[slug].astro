@@ -17,7 +17,7 @@ let articles: Record<string, any> = await getArticles(
 
 export const prerender = true;
 export async function getStaticPaths() {
-  const articles = (await getArticles(true)).filter(
+  const articles = (await getArticles(false)).filter(
     (a: Record<string, any>) => {
       return a.slug != null;
     },

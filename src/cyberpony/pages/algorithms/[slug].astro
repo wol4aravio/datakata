@@ -17,7 +17,7 @@ let algorithms: Record<string, any> = await getAlgorithms(
 
 export const prerender = true;
 export async function getStaticPaths() {
-  const algorithms = await getAlgorithms(true);
+  const algorithms = await getAlgorithms(false);
   console.log(algorithms);
   return algorithms.map((a: Record<string, any>) => {
     return { params: { slug: a.slug } };
