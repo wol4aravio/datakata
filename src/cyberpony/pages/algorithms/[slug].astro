@@ -15,16 +15,13 @@ let algorithms: Record<string, any> = await getAlgorithms(
   isProd(Astro.url.toString()),
 );
 
-console.log(algorithms);
-
 export const prerender = true;
 export async function getStaticPaths() {
   const algorithms = await getAlgorithms(true);
-  return [
-    ...algorithms.map((a: Record<string, any>) => {
-      return { params: { slug: a.slug } };
-    }),
-  ];
+  console.log(algorithms);
+  return algorithms.map((a: Record<string, any>) => {
+    return { params: { slug: a.slug } };
+  });
 }
 
 const { slug } = Astro.params;
@@ -32,7 +29,6 @@ const algorithm = algorithms.filter((a: Record<string, any>) => {
   return a.slug == slug;
 })[0];
 
-console.log(algorithms);
 console.log(slug, algorithm);
 
 // const content = await unified()
