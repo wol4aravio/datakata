@@ -19,8 +19,12 @@ const result = await client.login(cms_user, cms_password);
 export const directusClient = client;
 export const $refreshToken = atom(result["refresh_token"]?.toString());
 
-export async function getArticles(isProd: Boolean) {
-  let articles: Record<string, any>[] = [];
+async function getElementsFromCollection(
+  isProd: Boolean,
+  collectionName: string,
+  sortFields: Array<string>,
+): Promise<Record<string, any>[]> {
+  let elements: Record<string, any>[] = [];
   let query = {};
 
   if (isProd) {
@@ -30,17 +34,17 @@ export async function getArticles(isProd: Boolean) {
           _eq: true,
         },
       },
-      sort: ["-year", "title"],
+      sort: sortFields,
     };
   } else {
     query = {
-      sort: ["-year", "title"],
+      sort: sortFields,
     };
   }
 
   let failed = false;
   try {
-    articles = await directusClient.request(readItems("articles", query));
+    elements = await directusClient.request(readItems(collectionName, query));
   } catch (e) {
     const result = await directusClient.request(
       refresh("json", $refreshToken.get()),
@@ -49,8 +53,20 @@ export async function getArticles(isProd: Boolean) {
     failed = true;
   } finally {
     if (failed) {
-      articles = await directusClient.request(readItems("articles", query));
+      elements = await directusClient.request(readItems(collectionName, query));
     }
   }
-  return articles;
+  return elements;
+}
+
+export async function getArticles(
+  isProd: Boolean,
+): Promise<Record<string, any>[]> {
+  return getElementsFromCollection(isProd, "articles", ["-year", "title"]);
+}
+
+export async function getAlgorithms(
+  isProd: Boolean,
+): Promise<Record<string, any>[]> {
+  return getElementsFromCollection(isProd, "algorithms", ["name"]);
 }

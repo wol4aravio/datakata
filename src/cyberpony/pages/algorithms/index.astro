@@ -1,0 +1,29 @@
+---
+import MainLayout from "@cyberpony/layouts/MainLayout.astro";
+import AlgorithmCard from "@cyberpony/components/AlgorithmCard.astro";
+
+import { getAlgorithms } from "@common/scripts/directus";
+import isProd from "@common/scripts/tools";
+
+const algorithms = await getAlgorithms(isProd(Astro.url.toString()));
+console.log(algorithms);
+---
+
+<MainLayout>
+  <div class="mx-auto w-[70%] md:w-[100%]">
+    <div class="gird-cols-1 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        algorithms.map((a) => {
+          return (
+            <AlgorithmCard
+              title={a.name}
+              tags={["tag_1", "tag_2", "tag_3", "tag_4"]}
+              prod={a.prod}
+              url={"/algorithms/" + a.slug}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+</MainLayout>

@@ -1,8 +1,10 @@
 ---
 import "@common/styles/alpine.css";
+import Header from "@common/components/Header.astro";
+import Footer from "@common/components/Footer.astro";
 import DefaultLayout from "@common/layouts/DefaultLayout.astro";
 
-const { page_title, page_description } = Astro.props;
+const { page_title, page_description, visible_header = true } = Astro.props;
 ---
 
 <DefaultLayout
@@ -11,5 +13,17 @@ const { page_title, page_description } = Astro.props;
   suffix=" / Cyber Pony"
   yandex_verification="72da482b570c821a"
 >
-  <slot />
+  <div class="flex min-h-[100dvh] w-screen flex-col justify-between">
+    <div class="mt-4 w-[100dvw]">
+      <Header is_visible={visible_header}>
+        <div class="mx-auto text-center font-bold text-cyberpony-accent">
+          Cyber Pony
+        </div>
+      </Header>
+    </div>
+    <div class="max-w-7xl px-6 lg:mx-auto">
+      <slot />
+    </div>
+    <div class="w-screen"><Footer /></div>
+  </div>
 </DefaultLayout>
