@@ -7,6 +7,8 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import rehypeKatex from "rehype-katex";
+import remarkD2 from "remark-d2";
+import { VFile } from "vfile";
 
 import AlgorithmLayout from "@cyberpony/layouts/AlgorithmLayout.astro";
 import isProd from "@common/scripts/tools";
@@ -28,16 +30,22 @@ const algorithm = algorithms.filter((a: Record<string, any>) => {
   return a.slug == slug;
 })[0];
 
-// const content = await unified()
-//   .use(remarkParse)
-//   .use(remarkMath)
-//   .use(remarkRehype)
-//   .use(rehypeMathjax)
-//   .use(rehypeKatex)
-//   .use(rehypeStringify)
-//   .process(algorithm.body);
+const file = new VFile({
+  path: algorithm.slug,
+  value: algorithm.body,
+});
+
+const content = await unified()
+  .use(remarkParse)
+  .use(remarkMath)
+  .use(remarkD2, { compilePath: "public/cyberpony/d2" })
+  .use(remarkRehype)
+  .use(rehypeMathjax)
+  .use(rehypeKatex)
+  .use(rehypeStringify)
+  .process(file);
 ---
 
-<AlgorithmLayout title={algorithm.name} description={"Lorem ipsum"}>
-  <div>Lorem Ipsum</div>
+<AlgorithmLayout title={algorithm.name} description={algorithm.description}>
+  <algorithm set:html={String(content)} />
 </AlgorithmLayout>
