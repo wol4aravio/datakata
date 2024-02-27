@@ -22,3 +22,6 @@ pnpm-debug.log*
 .env
 .env.production
 cred_envs
+
+# d2 specific
+public/**/d2
