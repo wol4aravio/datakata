@@ -5,7 +5,7 @@ const { title, description } = Astro.props;
 ---
 
 <MainLayout page_title={title} page_description={description}>
-  <div class="mx-auto max-w-7xl p-2">
+  <div class="container max-w-7xl p-2">
     <div
       class="container mb-12 w-[90%] border-b-2 border-cyberpony-accent pb-4 text-center text-3xl font-bold"
     >
@@ -15,4 +15,5 @@ const { title, description } = Astro.props;
       <slot />
     </div>
   </div>
+  <script src="@common/scripts/blog_formatter.js"></script>
 </MainLayout>

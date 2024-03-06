@@ -7,7 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import rehypeKatex from "rehype-katex";
-import remarkD2 from "remark-d2";
+import rehypeMermaid from "rehype-mermaid";
 import { VFile } from "vfile";
 
 import AlgorithmLayout from "@cyberpony/layouts/AlgorithmLayout.astro";
@@ -38,8 +38,8 @@ const file = new VFile({
 const content = await unified()
   .use(remarkParse)
   .use(remarkMath)
-  .use(remarkD2, { compilePath: "public/cyberpony/d2" })
   .use(remarkRehype)
+  .use(rehypeMermaid)
   .use(rehypeMathjax)
   .use(rehypeKatex)
   .use(rehypeStringify)
