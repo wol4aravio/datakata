@@ -9,8 +9,11 @@ const algorithms = await getAlgorithms(isProd(Astro.url.toString()));
 console.log(algorithms);
 ---
 
-<MainLayout>
-  <div class="mx-auto w-[70%] md:w-[100%]">
+<MainLayout
+  title="Эвристические алгоритмы оптимизации"
+  description="Список алгоритмов, реализованных в open source библиотеке opta"
+>
+  <div class="mx-auto w-[80%] p-8 md:w-full">
     <div class="gird-cols-1 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
         algorithms.map((a) => {
