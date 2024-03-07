@@ -6,12 +6,11 @@ import { getAlgorithms } from "@common/scripts/directus";
 import isProd from "@common/scripts/tools";
 
 const algorithms = await getAlgorithms(isProd(Astro.url.toString()));
-console.log(algorithms);
 ---
 
 <MainLayout
-  title="Эвристические алгоритмы оптимизации"
-  description="Список алгоритмов, реализованных в open source библиотеке opta"
+  page_title="Эвристические алгоритмы оптимизации"
+  page_description="Список алгоритмов, реализованных в open source библиотеке opta"
 >
   <div class="mx-auto w-[80%] p-8 md:w-full">
     <div class="gird-cols-1 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
