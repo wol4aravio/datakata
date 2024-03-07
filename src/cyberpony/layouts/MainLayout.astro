@@ -21,9 +21,7 @@ const { page_title, page_description, visible_header = true } = Astro.props;
         </div>
       </Header>
     </div>
-    <div class="max-w-7xl px-6">
-      <slot />
-    </div>
+    <slot />
     <div class="w-screen"><Footer /></div>
   </div>
 </DefaultLayout>

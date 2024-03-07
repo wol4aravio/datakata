@@ -58,3 +58,15 @@ Object.entries(classFormat).forEach(([key, classes]) => {
     e.parentElement.classList.add("mx-auto");
   }
 });
+
+// Mermaid
+[...articleBody.getElementsByTagName("svg")].forEach((e) => {
+  if (e.id.startsWith("mermaid")) {
+    e.outerHTML = '<div class="mermaid-container">' + e.outerHTML + "</div>";
+  }
+});
+
+[...articleBody.getElementsByClassName("mermaid-container")].forEach((e) => {
+  e.classList.add("container");
+  e.classList.add("w-fit");
+});

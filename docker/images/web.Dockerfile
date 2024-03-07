@@ -8,7 +8,7 @@ ARG CMS_PASSWORD
 WORKDIR web
 COPY package.json .
 RUN npm install
-RUN curl -fsSL https://d2lang.com/install.sh | sh -s --
+RUN npx playwright install --with-deps
 
 ## Settings
 ENV HOST=0.0.0.0
@@ -37,7 +37,6 @@ ENTRYPOINT ["node", "./dist/server/entry.mjs"]
 # [Website] cyberpony.ru
 FROM base as cyberpony
 RUN TARGET=cyberpony CMS_URL=$CMS_URL CMS_USER=$CMS_USER CMS_PASSWORD=$CMS_PASSWORD npm run build
-RUN cp -r public/cyberpony/d2 dist/client
 ENTRYPOINT ["node", "./dist/server/entry.mjs"]
 
 # [Website] foxdriven.ru
