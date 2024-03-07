@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  healthchecks:
+    image: linuxserver/healthchecks:3.2.20240209
+    container_name: healthchecks
+    restart: always
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - SITE_ROOT=${SITE_ROOT}
+      - SITE_NAME=${SITE_NAME}
+      - SUPERUSER_EMAIL=${SUPERUSER_EMAIL}
+      - SUPERUSER_PASSWORD=${SUPERUSER_PASSWORD}
+      - DEBUG=${DEBUG}
+    networks:
+      - datakata-network
+    volumes:
+      - /mnt/nfs_share/healthchecks/config:/config
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.75"
+          memory: 256M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+      placement:
+        constraints:
+          - node.role == manager
+
+networks:
+  datakata-network:
+    external: true
