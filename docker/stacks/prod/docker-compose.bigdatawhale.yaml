@@ -8,6 +8,9 @@ services:
       - datakata-network
     environment:
       - HEALTHCHECK_URL=${HEALTHCHECK_URL}
+      - CMS_URL=${CMS_URL}
+      - CMS_USER=${CMS_USER}
+      - CMS_PASSWORD=${CMS_PASSWORD}
     healthcheck:
       test: (curl --fail $HEALTHCHECK_URL && curl --fail http://0.0.0.0:3000/health) || exit 1
       interval: 30s

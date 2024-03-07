@@ -6,6 +6,10 @@ services:
       env: dev
     networks:
       - datakata-network
+    environment:
+      - CMS_URL=${CMS_URL}
+      - CMS_USER=${CMS_USER}
+      - CMS_PASSWORD=${CMS_PASSWORD}
     healthcheck:
       test: curl --fail http://0.0.0.0:3000/health || exit 1
       interval: 60s
