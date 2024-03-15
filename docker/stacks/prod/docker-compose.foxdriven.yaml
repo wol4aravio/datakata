@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   website_foxdriven:
-    image: ghcr.io/wol4aravio/foxdriven:0.0.10
+    image: ghcr.io/wol4aravio/foxdriven:0.0.11
     labels:
       env: dev
     networks:
@@ -12,7 +12,7 @@ services:
       - CMS_USER=${CMS_USER}
       - CMS_PASSWORD=${CMS_PASSWORD}
     healthcheck:
-      test: (curl --fail $HEALTHCHECK_URL && curl --fail http://0.0.0.0:3000/health) || exit 1
+      test: (curl --fail $HEALTHCHECK_URL || curl --fail http://0.0.0.0:3000/health) || exit 1
       interval: 30s
       retries: 5
       start_period: 10s
